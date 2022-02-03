@@ -9,7 +9,6 @@ import {
     useToast
 } from '@chakra-ui/react';
 import axios from "axios";
-import Api from "./components/Api";
 import Router from "next/router"
 export default function Login(){
     useEffect(()=>{
