@@ -74,7 +74,7 @@ export default function Savedcodes(){
                                     Object.keys(languagesApi).find(i=>languagesApi[i]==val.language)
                                 }</Td>
                                 <Td>
-                                <Link href={`http://localhost:3000/viewcode/${val._id}`}>
+                                <Link href={`https://bash-ide.vercel.app/viewcode/${val._id}`}>
                                     Viewcode
                                 </Link>
                                 </Td>
