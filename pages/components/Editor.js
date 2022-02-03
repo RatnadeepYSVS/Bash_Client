@@ -259,9 +259,9 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                         if(uniqid){
                             const resp = await axios.put(`updatecode/${uniqid}`,data)
                             setOutput(resp.data.output)
-                            return Router.push("/#something")
+                            return Router.push("/#output")
                         }
-                        Router.push("/#something")
+                        Router.push("/#output")
                         const resp=await axios.post(`runcode`,data)
                         setOutput(resp.data.output)
                      }}
@@ -291,7 +291,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                 h='150px'
                 isReadOnly={true}
                 value={output}
-                id="something"
+                id="output"
                 />:<Spinner style={{display:"block"}} ml='40vw' size='xl'/>
             }
             </FormControl>
