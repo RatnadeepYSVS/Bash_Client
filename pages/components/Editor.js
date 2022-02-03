@@ -277,7 +277,6 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                 w='900px'
                 h='150px'
                 value={input}
-                id="something"
                 onChange={event => setInput(event.target.value)}
                 />
             </FormControl>
@@ -292,6 +291,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                 h='150px'
                 isReadOnly={true}
                 value={output}
+                id="something"
                 />:<Spinner style={{display:"block"}} ml='40vw' size='xl'/>
             }
             </FormControl>
