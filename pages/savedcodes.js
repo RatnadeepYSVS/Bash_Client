@@ -69,7 +69,7 @@ export default function Savedcodes(){
                     <Tbody>
                     {
                         userCodes.map((val,index)=>(
-                            <Tr>
+                            <Tr key={index}>
                                 <Td>{index+1}.</Td>
                                 <Td>{
                                     Object.keys(languagesApi).find(i=>languagesApi[i]==val.language)
@@ -96,7 +96,7 @@ export default function Savedcodes(){
                     }
                     </Tr>
                     </Tfoot>
-                   </Table>:<Heading textAlign="center">You don't have any saved Codes.</Heading>
+                   </Table>:<Heading textAlign="center">You are not having any saved Codes.</Heading>
                 }
            </div>
         </div>
