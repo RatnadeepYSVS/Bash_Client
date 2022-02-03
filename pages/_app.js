@@ -7,6 +7,9 @@ import { ColorModeScript } from '@chakra-ui/react'
 import '../styles/globals.css'
 import Navbar from './components/Navbar'
 import Head from 'next/head'
+import axios from 'axios'
+axios.defaults.baseURL='https://bashserver.herokuapp.com/'
+axios.defaults.withCredentials=true
 function MyApp({ Component, pageProps }) {
   const config = {
     initialColorMode: "dark",

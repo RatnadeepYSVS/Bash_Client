@@ -1,1 +1,0 @@
-export default 'https://bashserver.herokuapp.com/'

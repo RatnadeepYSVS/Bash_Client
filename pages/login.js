@@ -55,7 +55,7 @@ export default function Login(){
             email,
             password:passcode
         }
-        axios.post(`${Api}signup`,data).then(res=>{
+        axios.post(`signup`,data).then(res=>{
             const { token }=res.data
             localStorage.setItem("usertoken",token)
             window.location.replace("/")
@@ -85,7 +85,7 @@ export default function Login(){
             email,
             password:passcode
         }
-        axios.post(`${Api}signin`,data).then(res=>{
+        axios.post(`signin`,data).then(res=>{
             const { token } = res.data
             localStorage.setItem("usertoken",token)
             window.location.replace('/')

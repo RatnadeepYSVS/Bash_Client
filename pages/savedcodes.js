@@ -1,6 +1,5 @@
 import { useState,useEffect } from "react"
 import axios from "axios"
-import Api from "./components/Api"
 import Router from "next/router"
 import {
     Heading,
@@ -35,7 +34,7 @@ export default function Savedcodes(){
         const token = localStorage.getItem("usertoken")
         setUser(token)
         if(!user) return
-        axios.get(`${Api}yourcodes`,{
+        axios.get(`yourcodes`,{
             headers:{
                 "Authorization":token
             }

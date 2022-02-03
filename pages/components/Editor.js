@@ -21,7 +21,6 @@ import {
 from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css"
 import axios from "axios"
-import Api from "./Api";
 import copy from "copy-to-clipboard";
 const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
     const languagesEditor={
@@ -106,6 +105,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
     const { colorMode }=useColorMode()
     const languages=['C','C++',"C#","Java","Kotlin","Go","Python","JavaScript","Ruby","Swift"]
     const toast = useToast()
+    console.log(process.env.API_KEY)
     return  (
         <div className={styles.paddingclass}>
             <Flex mt='-10'>
@@ -187,7 +187,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                             language,
                             input
                         }
-                        axios.post(`${Api}savecode`,data,{
+                        axios.post(`savecode`,data,{
                             headers:{
                                 "Authorization":token
                             }
@@ -218,7 +218,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                             input
                         }
                         setLink('generating')
-                        axios.post(`${Api}sharecode`,data).then(
+                        axios.post(`sharecode`,data).then(
                             resp=>{
                                 setLink('Link generated')
                                 copy(`${window.location.href}viewcode/${resp.data.codeData._id}`)
@@ -256,11 +256,11 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                             input
                         }
                         if(uniqid){
-                            const resp = await axios.put(`${Api}updatecode/${uniqid}`,data)
+                            const resp = await axios.put(`updatecode/${uniqid}`,data)
                             setOutput(resp.data.output)
                             return
                         }
-                        const resp=await axios.post(`${Api}runcode`,data)
+                        const resp=await axios.post(`runcode`,data)
                         setOutput(resp.data.output)
                      }}
                      >Run</Button>
