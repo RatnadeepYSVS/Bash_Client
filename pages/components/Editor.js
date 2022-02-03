@@ -21,7 +21,7 @@ import {
 from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css"
 import axios from "axios"
-import { url } from "./Api";
+import Api from "./Api";
 import copy from "copy-to-clipboard";
 const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
     const languagesEditor={
@@ -187,7 +187,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                             language,
                             input
                         }
-                        axios.post(`${url}savecode`,data,{
+                        axios.post(`${Api}savecode`,data,{
                             headers:{
                                 "Authorization":token
                             }
@@ -218,7 +218,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                             input
                         }
                         setLink('generating')
-                        axios.post(`${url}sharecode`,data).then(
+                        axios.post(`${Api}sharecode`,data).then(
                             resp=>{
                                 setLink('Link generated')
                                 copy(`${window.location.href}viewcode/${resp.data.codeData._id}`)
@@ -256,11 +256,11 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                             input
                         }
                         if(uniqid){
-                            const resp = await axios.put(`${url}updatecode/${uniqid}`,data)
+                            const resp = await axios.put(`${Api}updatecode/${uniqid}`,data)
                             setOutput(resp.data.output)
                             return
                         }
-                        const resp=await axios.post(`${url}runcode`,data)
+                        const resp=await axios.post(`${Api}runcode`,data)
                         setOutput(resp.data.output)
                      }}
                      >Run</Button>

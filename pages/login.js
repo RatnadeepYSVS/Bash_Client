@@ -9,7 +9,7 @@ import {
     useToast
 } from '@chakra-ui/react';
 import axios from "axios";
-import { url } from "./components/Api";
+import Api from "./components/Api";
 import Router from "next/router"
 export default function Login(){
     useEffect(()=>{
@@ -55,7 +55,7 @@ export default function Login(){
             email,
             password:passcode
         }
-        axios.post(`${url}signup`,data).then(res=>{
+        axios.post(`${Api}signup`,data).then(res=>{
             const { token }=res.data
             localStorage.setItem("usertoken",token)
             window.location.replace("/")
@@ -85,7 +85,7 @@ export default function Login(){
             email,
             password:passcode
         }
-        axios.post(`${url}signin`,data).then(res=>{
+        axios.post(`${Api}signin`,data).then(res=>{
             const { token } = res.data
             localStorage.setItem("usertoken",token)
             window.location.replace('/')

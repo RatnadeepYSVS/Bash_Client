@@ -1,1 +1,1 @@
-export const url = 'https://bashserver.herokuapp.com/'
+export default 'https://bashserver.herokuapp.com/'

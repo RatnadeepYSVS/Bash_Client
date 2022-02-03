@@ -1,6 +1,6 @@
 import Codeditor from "../components/Editor"
 import axios from "axios"
-import { url } from "../components/Api"
+import Api from "../components/Api"
 export default function Code({ codeData,uniqid }){
     const languagesApi={
         'c':"C",
@@ -28,7 +28,7 @@ export default function Code({ codeData,uniqid }){
 }
 export const getServerSideProps=async(context)=>{
     const { id } = context.params
-    const res = await axios.get(`${url}viewcode/${id}`)
+    const res = await axios.get(`${Api}viewcode/${id}`)
     const codeData = await res.data.code
     return {
         props:{
