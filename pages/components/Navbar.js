@@ -8,7 +8,7 @@ export default function Navbar(){
     useEffect(()=>{
         const token = localStorage.getItem("usertoken")
         token?setUser(token):setUser('')
-    })
+    },[])
     const onHandleClick=()=>{
         if(!user){
            return Router.push("/login")
