@@ -22,6 +22,7 @@ from "@chakra-ui/react";
 import styles from "../../styles/Home.module.css"
 import axios from "axios"
 import copy from "copy-to-clipboard";
+import Router from "next/router";
 const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
     const languagesEditor={
         "C":'c',
@@ -258,8 +259,9 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                         if(uniqid){
                             const resp = await axios.put(`updatecode/${uniqid}`,data)
                             setOutput(resp.data.output)
-                            return
+                            return Router.push("/#something")
                         }
+                        Router.push("/#something")
                         const resp=await axios.post(`runcode`,data)
                         setOutput(resp.data.output)
                      }}
@@ -275,6 +277,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                 w='900px'
                 h='150px'
                 value={input}
+                id="something"
                 onChange={event => setInput(event.target.value)}
                 />
             </FormControl>
@@ -289,7 +292,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                 h='150px'
                 isReadOnly={true}
                 value={output}
-                />:<Spinner style={{display:"block"}} ml='40vw' id="something" size='xl'/>
+                />:<Spinner style={{display:"block"}} ml='40vw' size='xl'/>
             }
             </FormControl>
     </form>
