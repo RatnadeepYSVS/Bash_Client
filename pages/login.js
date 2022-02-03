@@ -122,7 +122,7 @@ export default function Login(){
             </form>
           </Box>
           <Box textAlign="center">
-            Don't have an Account?
+            Not having an Account?
             <Heading 
             style={{
                 fontFamily:"inherit",
