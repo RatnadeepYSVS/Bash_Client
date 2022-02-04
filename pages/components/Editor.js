@@ -292,7 +292,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                 isReadOnly={true}
                 value={output}
                 id="output"
-                />:<Spinner style={{display:"block"}} ml='40vw' size='xl'/>
+                />:<Spinner style={{display:"block"}} ml='40vw' size='xl' id="output"/>
             }
             </FormControl>
     </form>
