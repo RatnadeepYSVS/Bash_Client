@@ -222,7 +222,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                         axios.post(`sharecode`,data).then(
                             resp=>{
                                 setLink('Link generated')
-                                copy(`${window.location.href}viewcode/${resp.data.codeData._id}`)
+                                uniqid?copy(`${window.location.href}`):copy(`${window.location.href}viewcode/${resp.data.codeData._id}`)
                                 toast({
                                     title:"Link Copied To Clipboard",
                                     status:"success",

@@ -67,7 +67,7 @@ export default function Savedcodes(){
                     </Thead>
                     <Tbody>
                     {
-                        userCodes.map((val,index)=>(
+                        userCodes.reverse().map((val,index)=>(
                             <Tr key={index}>
                                 <Td>{index+1}.</Td>
                                 <Td>{
