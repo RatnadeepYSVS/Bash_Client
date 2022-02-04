@@ -8,9 +8,6 @@ export default function Navbar(){
     useEffect(()=>{
         const token = localStorage.getItem("usertoken")
         token?setUser(token):setUser('')
-        if(token){
-            Router.reload()
-        }
     },[])
     const onHandleClick=()=>{
         if(!user){
