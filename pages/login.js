@@ -57,7 +57,7 @@ export default function Login(){
         axios.post(`signup`,data).then(res=>{
             const { token }=res.data
             localStorage.setItem("usertoken",token)
-            Router.push("/")
+            window.location.replace("/")
         }).catch(e=>{
             const { msg }=e.response.data
             toast({
@@ -87,7 +87,7 @@ export default function Login(){
         axios.post(`signin`,data).then(res=>{
             const { token } = res.data
             localStorage.setItem("usertoken",token)
-            Router.push('/')
+            window.location.replace('/')
         }).catch(e=>{
             const { msg } = e.response.data
             toast({
