@@ -259,7 +259,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
                         if(uniqid){
                             const resp = await axios.put(`updatecode/${uniqid}`,data)
                             setOutput(resp.data.output)
-                            return Router.push("/#output")
+                            return Router.push(`${window.location.href}/#output`)
                         }
                         Router.push("/#output")
                         const resp=await axios.post(`runcode`,data)
