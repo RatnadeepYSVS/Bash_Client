@@ -8,6 +8,7 @@ export default function Navbar(){
     useEffect(()=>{
         const token = localStorage.getItem("usertoken")
         token?setUser(token):setUser('')
+        window.location.reload()
     },[])
     const onHandleClick=()=>{
         if(!user){
