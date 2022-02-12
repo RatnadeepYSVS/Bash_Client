@@ -1,7 +1,7 @@
 import { createContext,useReducer } from "react";
 import { userReducer } from "../reducers/userReducer";
 export const UserContext = createContext()
-export default ({ children })=>{
+const UserContextProvider= ({ children })=>{
     const [auth,dispatch] = useReducer(userReducer,{
         isAuth:false
     })
@@ -11,3 +11,4 @@ export default ({ children })=>{
         </UserContext.Provider>
     )
 }
+export default UserContextProvider
