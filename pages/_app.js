@@ -1,9 +1,9 @@
 import { 
   ChakraProvider,
   CSSReset,
-  extendTheme
+  extendTheme,
+  ColorModeScript
 } from '@chakra-ui/react'
-import { ColorModeScript } from '@chakra-ui/react'
 import '../styles/globals.css'
 import Navbar from './components/Navbar'
 import Head from 'next/head'
