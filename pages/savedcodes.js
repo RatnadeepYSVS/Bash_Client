@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react"
+import { useState,useEffect, useContext } from "react"
 import axios from "axios"
 import Router from "next/router"
 import {
@@ -14,6 +14,7 @@ import {
     Link,
     Button,
 } from '@chakra-ui/react'
+import { UserContext } from "./contexts/userContext"
 export default function Savedcodes(){
     const languagesApi={
         "C":'c',
@@ -27,13 +28,13 @@ export default function Savedcodes(){
         "Ruby":"rb",
         "Swift":"swift"
     }
-    const [user,setUser] = useState('')
     const [userCodes,setUserCodes] = useState([])
     const codeFactors=["S.No",'Language','Code','CreatedAt','UpdatedAt']
+    const { auth } = useContext(UserContext)
+    const { isAuth } = auth
     useEffect(()=>{
         const token = localStorage.getItem("usertoken")
-        setUser(token)
-        if(!user) return
+        if(!token) return
         axios.get(`yourcodes`,{
             headers:{
                 "Authorization":token
@@ -43,9 +44,8 @@ export default function Savedcodes(){
         }).catch(e=>{
             console.log(e.response.data)
         })
-        setUser(token)
-    },[user])
-    return user?(
+    },[])
+    return isAuth?(
         <div style={{padding:"0px 70px"}}>
             <Heading textAlign="center">
                 Your codes

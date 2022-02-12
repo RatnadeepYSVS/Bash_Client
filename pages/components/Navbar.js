@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react"
+import { useContext } from "react"
 import { Heading,Button,useColorMode,Flex,Box,Spacer } from '@chakra-ui/react'
 import { MoonIcon,SunIcon } from "@chakra-ui/icons"
 import Link from "next/link"
 import Router from "next/router"
+import { UserContext } from "../contexts/userContext"
 export default function Navbar(){
-    const [user,setUser]=useState('')
-    useEffect(()=>{
-        const token = localStorage.getItem("usertoken")
-        token?setUser(token):setUser('')
-    },[])
+    const { auth,dispatch } = useContext(UserContext)
+    const { isAuth } = auth
     const onHandleClick=()=>{
-        if(!user){
-           return Router.push("/login")
+        if(!isAuth){
+         Router.push("/login")
         }
         localStorage.removeItem("usertoken")
-        setUser('')
+        dispatch({ type:"LOGOUT" })
         Router.push("/")
     }
     const { colorMode,toggleColorMode }=useColorMode()
@@ -40,7 +38,7 @@ export default function Navbar(){
                 </Link>
                 <Button ml='5' bgColor='tomato' onClick={onHandleClick}>
                     {
-                        user?"Logout":"Login"
+                        isAuth?"Logout":"Login"
                     }
                 </Button>
             </Box>

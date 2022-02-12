@@ -106,7 +106,6 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
     const { colorMode }=useColorMode()
     const languages=['C','C++',"C#","Java","Kotlin","Go","Python","JavaScript","Ruby","Swift"]
     const toast = useToast()
-    console.log(process.env.API_KEY)
     return  (
         <div className={styles.paddingclass}>
             <Flex mt='-10'>

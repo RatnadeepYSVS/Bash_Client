@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import {
     Box,
     Heading,
@@ -10,13 +10,13 @@ import {
 } from '@chakra-ui/react';
 import axios from "axios";
 import Router from "next/router"
+import { UserContext } from "./contexts/userContext";
 export default function Login(){
+    const { dispatch } = useContext(UserContext)
     useEffect(()=>{
         const token = localStorage.getItem("usertoken")
-        if(token){
-            return Router.push("/")
-        }
-    })
+        if(token) Router.push("/")
+    },[])
     const [username,setUsername]=useState('')
     const [login,setLogin]=useState(true)
     const [email,setEmail]=useState('')
@@ -57,7 +57,8 @@ export default function Login(){
         axios.post(`signup`,data).then(res=>{
             const { token }=res.data
             localStorage.setItem("usertoken",token)
-            window.location.replace("/")
+            dispatch({ type:"LOGIN" })
+            Router.push("/")
         }).catch(e=>{
             const { msg }=e.response.data
             toast({
@@ -87,7 +88,8 @@ export default function Login(){
         axios.post(`signin`,data).then(res=>{
             const { token } = res.data
             localStorage.setItem("usertoken",token)
-            window.location.replace('/')
+            dispatch({ type:"LOGIN" })
+            Router.push("/")
         }).catch(e=>{
             const { msg } = e.response.data
             toast({
