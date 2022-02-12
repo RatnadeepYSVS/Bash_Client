@@ -1,19 +1,6 @@
 import { createContext,useReducer } from "react";
+import userReducer from "../reducers/userReducer";
 export const UserContext = createContext()
-const userReducer=(state,{ type })=>{
-    switch(type){
-        case "LOGIN":
-            return {
-                isAuth:true
-            }
-        case "LOGOUT":
-            return {
-                isAuth:false
-            }
-        default:
-            return state
-    }
-}
 const UserContextProvider= ({ children })=>{
     const [auth,dispatch] = useReducer(userReducer,{
         isAuth:false
