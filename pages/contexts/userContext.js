@@ -1,5 +1,5 @@
 import { createContext,useReducer } from "react";
-import userReducer from "../reducers/userReducer";
+import userReducer from "../../reducers/userReducer";
 export const UserContext = createContext()
 const UserContextProvider= ({ children })=>{
     const [auth,dispatch] = useReducer(userReducer,{
