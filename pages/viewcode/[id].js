@@ -1,6 +1,15 @@
 import Codeditor from "../components/Editor"
 import axios from "axios"
+import { UserContext } from "../contexts/userContext"
+import { useContext,useEffect } from "react"
 export default function Code({ codeData,uniqid }){
+    const { auth,dispatch } = useContext(UserContext)
+    useEffect(()=>{
+        const token = localStorage.getItem("usertoken")
+        if(token){
+        dispatch({type:"LOGIN"})
+        }
+    },[])
     const languagesApi={
         'c':"C",
         'cpp':"C++",
