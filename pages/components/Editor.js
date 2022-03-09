@@ -87,7 +87,7 @@ const Codeditor=({ viewLanguage,viewCode,viewInput,viewOutput,uniqid })=>{
         'func main() {\n' +
         '    fmt.Println("Hello World")\n' +
         '}\n',
-        "Swift":'// Your code goes here\nprint("Hello, World!")\n',
+        "Swift":'// Your code goes here\nprint("Hey there Apple Developer!!!!")\n',
         "Python":'# Your code goes here\nprint("Python is the boss")',
         "JavaScript":"// Your code goes here\nconsole.log('JavaScript is new cool')",
         "Ruby":'# Your code goes here\nputs "Show power of ruby script"'
